@@ -6,11 +6,19 @@
 /*   By: clegros <clegros@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 11:18:47 by clegros           #+#    #+#             */
-/*   Updated: 2024/03/05 11:18:49 by clegros          ###   ########.fr       */
+/*   Updated: 2024/03/19 17:20:13 by clegros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	ft_isdigit(int c)
+{
+	if (c >= 48 && c <= 57)
+		return (1);
+	else
+		return (0);
+}
 
 int	main(int argc, char **argv)
 {

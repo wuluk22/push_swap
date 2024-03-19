@@ -6,11 +6,24 @@
 /*   By: clegros <clegros@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 11:18:41 by clegros           #+#    #+#             */
-/*   Updated: 2024/03/05 11:18:43 by clegros          ###   ########.fr       */
+/*   Updated: 2024/03/19 16:16:32 by clegros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+t_stack_node	*ft_lstlast(t_stack_node *lst)
+{
+	if (!lst)
+		return (NULL);
+	if (lst)
+	{
+		while (lst->next != NULL)
+			lst = lst->next;
+		return (lst);
+	}
+	return (NULL);
+}
 
 void	ft_lstadd_back(t_stack_node **lst, t_stack_node *new)
 {

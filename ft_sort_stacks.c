@@ -5,12 +5,40 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: clegros <clegros@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/19 15:42:46 by clegros           #+#    #+#             */
-/*   Updated: 2024/03/19 15:43:48 by clegros          ###   ########.fr       */
+/*   Created: 2024/03/22 16:32:17 by clegros           #+#    #+#             */
+/*   Updated: 2024/03/26 16:07:37 by clegros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	move_a_to_b(t_stack_node **a, t_stack_node **b)
+{
+	t_stack_node	*cheapest_node;
+
+	cheapest_node = get_cheapest(*a);
+	if (cheapest_node->above_median
+		&& cheapest_node->target_node->above_median)
+	{
+		while (*b != cheapest_node->target_node && *a != cheapest_node)
+			rr(a, b, false);
+	}
+	else if (!(cheapest_node->above_median)
+		&& !(cheapest_node->target_node->above_median))
+	{
+		while (*b != cheapest_node->target_node && *a != cheapest_node)
+			rrr(a, b, false);
+	}
+	prep_for_push(a, cheapest_node, 'a');
+	prep_for_push(b, cheapest_node->target_node, 'b');
+	pb(b, a, false);
+}
+
+static void	move_b_to_a(t_stack_node **a, t_stack_node **b)
+{
+	prep_for_push(a, (*b)->target_node, 'a');
+	pa(a, b, false);
+}
 
 void	sort_stacks(t_stack_node **a, t_stack_node **b)
 {

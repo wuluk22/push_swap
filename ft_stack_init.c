@@ -6,7 +6,7 @@
 /*   By: clegros <clegros@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:29:31 by clegros           #+#    #+#             */
-/*   Updated: 2024/03/19 15:22:02 by clegros          ###   ########.fr       */
+/*   Updated: 2024/03/26 16:08:27 by clegros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static long	ft_atol(const char *s)
 
 	result = 0;
 	sign = 1;
-	while (*s == ' ' || *s == '\t' || *s == '\n' || 
-		*s == '\r' || *s == '\f' || *s == '\v')
+	while (*s == ' ' || *s == '\t' || *s == '\n'
+		|| *s == '\r' || *s == '\f' || *s == '\v')
 		s++;
 	if (*s == '-' || *s == '+')
 	{
@@ -28,7 +28,7 @@ static long	ft_atol(const char *s)
 			sign = -1;
 		s++;
 	}
-	while (ft_isdigit(*s))
+	while (*s >= 48 && *s <= 57)
 		result = result * 10 + (*s++ - '0');
 	return (result * sign);
 }
@@ -64,6 +64,8 @@ void	init_stack_a(t_stack_node **a, char **argv)
 	int		i;
 
 	i = 0;
+	if (!argv)
+		return ;
 	while (argv[i])
 	{
 		if (error_syntax(argv[i]))
@@ -74,7 +76,7 @@ void	init_stack_a(t_stack_node **a, char **argv)
 		if (error_duplicate(*a, (int)n))
 			free_errors(a);
 		append_node(a, (int)n);
-		i++;
+		++i;
 	}
 }
 

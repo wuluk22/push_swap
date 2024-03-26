@@ -6,7 +6,7 @@
 /*   By: clegros <clegros@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 15:49:01 by clegros           #+#    #+#             */
-/*   Updated: 2024/03/19 15:51:10 by clegros          ###   ########.fr       */
+/*   Updated: 2024/03/26 16:03:36 by clegros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ int	ft_printf(const char *fmt, ...)
 	va_start(ptr, fmt);
 	while (*fmt)
 	{
-		if ((*fmt == '%') && ((*(fmt + 1) == 's') || 
-				(*(fmt + 1) == 'd') || (*(fmt + 1) == 'x')))
+		if ((*fmt == '%') && ((*(fmt + 1) == 's') || (*(fmt + 1) == 'd')
+				|| (*(fmt + 1) == 'x')))
 		{
 			fmt++;
 			if (*fmt == 's')

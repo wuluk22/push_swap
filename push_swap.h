@@ -14,10 +14,11 @@
 # define PUSH_SWAP_H
 
 # include <unistd.h>
-# include <stdarg.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <stdbool.h>
 # include <limits.h>
+# include <stdarg.h>
 
 typedef struct s_stack_node
 {
@@ -27,8 +28,8 @@ typedef struct s_stack_node
 	bool				above_median;
 	bool				cheapest;
 	struct s_stack_node	*target_node;
-	struct s_stack_node	*prev;
 	struct s_stack_node	*next;
+	struct s_stack_node	*prev;
 }	t_stack_node;
 
 void			pa(t_stack_node **a, t_stack_node **b, bool print);
@@ -51,13 +52,6 @@ void			sort_three(t_stack_node **a);
 void			prep_for_push(t_stack_node **stack, t_stack_node *top_node,
 					char stack_name);
 t_stack_node	*get_cheapest(t_stack_node *stack);
-
-void			rotate_both(t_stack_node **a, t_stack_node **b,
-					t_stack_node *cheapest_node);
-void			rev_rotate_both(t_stack_node **a, t_stack_node **b,
-					t_stack_node *cheapest_node);
-void			move_a_to_b(t_stack_node **a, t_stack_node **b);
-void			move_b_to_a(t_stack_node **a, t_stack_node **b);
 void			min_on_top(t_stack_node **a);
 
 void			init_stack_a(t_stack_node **a, char **argv);
@@ -74,15 +68,10 @@ t_stack_node	*find_max(t_stack_node *stack);
 
 int				error_syntax(char *str_n);
 int				error_duplicate(t_stack_node *a, int n);
+void			free_matrix(char **argv);
 void			free_stack(t_stack_node **stack);
 void			free_errors(t_stack_node **a);
 
-void			ft_lstadd_back(t_stack_node **lst, t_stack_node *new);
-void			ft_lstadd_front(t_stack_node **lst, t_stack_node *new);
-int				ft_lstsize(t_stack_node *lst);
-t_stack_node	*ft_lstlast(t_stack_node *lst);
-
-int				ft_isdigit(int c);
 size_t			ft_strlen(const char *s);
 char			*ft_strcpy(char *dest, char *src);
 char			*ft_strdup(const char *s1);

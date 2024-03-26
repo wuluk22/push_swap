@@ -36,7 +36,7 @@ int	error_duplicate(t_stack_node *a, int n)
 		return (0);
 	while (a)
 	{
-		if (a-> value == n)
+		if (a->value == n)
 			return (1);
 		a = a->next;
 	}

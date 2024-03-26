@@ -12,15 +12,12 @@
 
 
 NAME    = push_swap
-OBJ     = $(SRC:.c=.o)
 SRC     = push_swap.c\
 			ft_init_a_to_b.c ft_init_b_to_a.c\
-			ft_lst_utils.c\
 			ft_printf.c\
 			ft_push.c\
 			ft_rev_rotate.c\
 			ft_rotate.c\
-			ft_sort_stacks_utils.c\
 			ft_sort_stacks.c\
 			ft_sort.c\
 			ft_split.c\
@@ -28,6 +25,7 @@ SRC     = push_swap.c\
 			ft_stack_utils.c\
 			ft_swap.c\
 			ft_error_handle.c
+OBJ     = $(SRC:.c=.o)
 CC      = gcc
 CFLAGS  = -Wall -Werror -Wextra
 COMP    = $(CC) $(CFLAGS) $(LINK) -fsanitize=address
@@ -35,7 +33,7 @@ RM      = rm -f
 
 all:    $(NAME)
 
-$(NAME): $(OBJ) push_swap.h
+$(NAME): $(OBJ)
 	$(COMP) $(OBJ) -o $(NAME)
 
 clean:

@@ -6,7 +6,7 @@
 /*   By: clegros <clegros@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 16:43:21 by clegros           #+#    #+#             */
-/*   Updated: 2024/03/19 15:34:09 by clegros          ###   ########.fr       */
+/*   Updated: 2024/03/26 16:04:10 by clegros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,15 @@ void	sort_three(t_stack_node **a)
 		rra(a, false);
 	if ((*a)->value > (*a)->next->value)
 		sa(a, false);
+}
+
+void	min_on_top(t_stack_node **a)
+{
+	while ((*a)->value != find_min(*a)->value)
+	{
+		if (find_min(*a)->above_median)
+			ra(a, false);
+		else
+			rra(a, false);
+	}
 }

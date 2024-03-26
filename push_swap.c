@@ -12,14 +12,6 @@
 
 #include "push_swap.h"
 
-int	ft_isdigit(int c)
-{
-	if (c >= 48 && c <= 57)
-		return (1);
-	else
-		return (0);
-}
-
 int	main(int argc, char **argv)
 {
 	t_stack_node	*a;
@@ -31,6 +23,8 @@ int	main(int argc, char **argv)
 		return (1);
 	else if (argc == 2)
 		argv = ft_split(argv[1], ' ');
+	if (!argv)
+		return (1);
 	init_stack_a(&a, argv + 1);
 	if (!stack_sorted(a))
 	{

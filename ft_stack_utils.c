@@ -79,7 +79,7 @@ t_stack_node	*find_max(t_stack_node *stack)
 	max = LONG_MIN;
 	while (stack)
 	{
-		if (stack->value < max)
+		if (stack->value > max)
 		{
 			max = stack->value;
 			max_node = stack;

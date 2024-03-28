@@ -15,10 +15,10 @@
 static void	rev_rotate(t_stack_node **stack)
 {
 	t_stack_node	*last_node;
-
-	last_node = find_last(*stack);
+	
 	if (!*stack || !(*stack)->next)
 		return ;
+	last_node = find_last(*stack);
 	last_node->prev->next = NULL;
 	last_node->prev = NULL;
 	last_node->next = *stack;

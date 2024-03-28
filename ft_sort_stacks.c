@@ -17,14 +17,12 @@ static void	move_a_to_b(t_stack_node **a, t_stack_node **b)
 	t_stack_node	*cheapest_node;
 
 	cheapest_node = get_cheapest(*a);
-	if (cheapest_node->above_median
-		&& cheapest_node->target_node->above_median)
+	if (cheapest_node->median && cheapest_node->target_node->median)
 	{
 		while (*b != cheapest_node->target_node && *a != cheapest_node)
 			rr(a, b, false);
 	}
-	else if (!(cheapest_node->above_median)
-		&& !(cheapest_node->target_node->above_median))
+	else if (!(cheapest_node->median) && !(cheapest_node->target_node->median))
 	{
 		while (*b != cheapest_node->target_node && *a != cheapest_node)
 			rrr(a, b, false);
@@ -45,9 +43,13 @@ void	sort_stacks(t_stack_node **a, t_stack_node **b)
 	int	len_a;
 
 	len_a = stack_len(*a);
-	if (len_a-- > 3 && !stack_sorted(*a))
+	if (stack_sorted(*a))
+		return ;
+	if (len_a <= 3)
+		sort_three(a);
+	if (len_a-- > 3)
 		pb(b, a, false);
-	if (len_a-- > 3 && !stack_sorted(*a))
+	if (len_a-- > 3)
 		pb(b, a, false);
 	while (len_a-- > 3 && !stack_sorted(*a))
 	{

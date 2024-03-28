@@ -15,19 +15,19 @@
 void	current_index(t_stack_node *stack)
 {
 	int	i;
-	int	median;
+	int	middle;
 
 	i = 0;
 	if (!stack)
 		return ;
-	median = stack_len(stack) / 2;
+	middle = stack_len(stack) / 2;
 	while (stack)
 	{
 		stack->index = i;
-		if (i <= median)
-			stack->above_median = true;
+		if (i <= middle)
+			stack->median = true;
 		else
-			stack->above_median = false;
+			stack->median = false;
 		stack = stack->next;
 		++i;
 	}
@@ -70,9 +70,9 @@ static void	cost_analysis_a(t_stack_node *a, t_stack_node *b)
 	while (a)
 	{
 		a->push_price = a->index;
-		if (!(a->above_median))
+		if (!(a->median))
 			a->push_price = len_a - (a->index);
-		if (a->target_node->above_median)
+		if (a->target_node->median)
 			a->push_price += a->target_node->index;
 		else
 			a->push_price += len_b - (a->target_node->index);

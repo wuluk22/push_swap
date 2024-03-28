@@ -33,7 +33,7 @@ static long	ft_atol(const char *s)
 	return (result * sign);
 }
 
-static void	append_node(t_stack_node **stack, int n)
+static void	add_node(t_stack_node **stack, int n)
 {
 	t_stack_node	*node;
 	t_stack_node	*last_node;
@@ -75,7 +75,7 @@ void	init_stack_a(t_stack_node **a, char **argv)
 			free_errors(a);
 		if (error_duplicate(*a, (int)n))
 			free_errors(a);
-		append_node(a, (int)n);
+		add_node(a, (int)n);
 		++i;
 	}
 }
@@ -101,14 +101,14 @@ void	prep_for_push(t_stack_node **stack,
 	{
 		if (stack_name == 'a')
 		{
-			if (top_node->above_median)
+			if (top_node->median)
 				ra(stack, false);
 			else
 				rra(stack, false);
 		}
 		else if (stack_name == 'b')
 		{
-			if (top_node->above_median)
+			if (top_node->median)
 				rb(stack, false);
 			else
 				rrb(stack, false);

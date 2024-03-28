@@ -29,7 +29,7 @@ void	min_on_top(t_stack_node **a)
 {
 	while ((*a)->value != find_min(*a)->value)
 	{
-		if (find_min(*a)->above_median)
+		if (find_min(*a)->median)
 			ra(a, false);
 		else
 			rra(a, false);

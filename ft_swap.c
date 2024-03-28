@@ -15,10 +15,10 @@
 static void	swap(t_stack_node **stack)
 {
 	t_stack_node	*first_node;
-
-	first_node = *stack;
+	
 	if (!*stack || !(*stack)->next)
 		return ;
+	first_node = *stack;
 	*stack = first_node->next;
 	(*stack)->prev = NULL;
 	first_node->prev = *stack;

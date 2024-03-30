@@ -6,7 +6,7 @@
 /*   By: clegros <clegros@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:32:17 by clegros           #+#    #+#             */
-/*   Updated: 2024/03/26 16:07:37 by clegros          ###   ########.fr       */
+/*   Updated: 2024/03/29 23:05:20 by clegros          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,17 @@ static void	move_b_to_a(t_stack_node **a, t_stack_node **b)
 {
 	prep_for_push(a, (*b)->target_node, 'a');
 	pa(a, b, false);
+}
+
+void	min_on_top(t_stack_node **a)
+{
+	while ((*a)->value != find_min(*a)->value)
+	{
+		if (find_min(*a)->median)
+			ra(a, false);
+		else
+			rra(a, false);
+	}
 }
 
 void	sort_stacks(t_stack_node **a, t_stack_node **b)

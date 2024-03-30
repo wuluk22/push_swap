@@ -18,20 +18,20 @@ static int	count_words(char *s, char c)
 	bool	inside_word;
 
 	count = 0;
+	inside_word = false;
 	while (*s)
 	{
-		inside_word = false;
-		while (*s == c && *s)
-			++s;
-		while (*s != c && *s)
+		if (*s != c)
 		{
 			if (!inside_word)
 			{
-				++count;
+				count++;
 				inside_word = true;
 			}
-			++s;
 		}
+		else
+			inside_word = false;
+		s++;
 	}
 	return (count);
 }
